@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sai Darshini | Combined Projects</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+
+    nav {
+      background: #1e293b;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f472b6;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    nav ul li a:hover {
+      color: #f472b6;
+    }
+
+    section {
+      display: none;
+      padding: 3rem 2rem;
+      min-height: 90vh;
+    }
+    section.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1517816428104-797678c7cf41');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 4rem 2rem;
+      color: white;
+    }
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #f472b6;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, #a855f7, #ec4899);
+      color: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    h2 { color: #f472b6; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+
+    input, button, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      border: none;
+      background: #334155;
+      color: white;
+    }
+    button {
+      background: linear-gradient(to right, #a855f7, #ec4899);
+      cursor: pointer;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      background: #334155;
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      resize: none;
+    }
+
+    ul#taskList li {
+      display: flex;
+      justify-content: space-between;
+      background: #334155;
+      padding: 0.4rem 1rem;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1e293b;
+      color: #94a3b8;
+    }
+
+    a {
+      color: #f472b6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">sai.portfolio</div>
+  <ul>
+    <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+    <li><a onclick="showPage('todo')">To-Do</a></li>
+    <li><a onclick="showPage('products')">Products</a></li>
+    <li><a onclick="showPage('contact')">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Portfolio Page -->
+<section id="portfolio" class="active">
+  <div class="hero">
+    <img src="c:\Users\saida\OneDrive\文档\gmail pic.jpg" alt="Sai Darshini" />
+    <h1>Hi, I'm <span style="color:#f472b6">Sai Darshini</span></h1>
+    <p>Frontend developer passionate about creating stunning interfaces.</p>
+    <div class="btn" onclick="showPage('todo')">Try My To-Do App</div>
+  </div>
+
+  <h2>💻 My Skills</h2>
+  <div class="grid">
+    <div class="card">HTML</div>
+    <div class="card">CSS</div>
+    <div class="card">JavaScript</div>
+    <div class="card">Git & GitHub</div>
+    <div class="card">Responsive Design</div>
+  </div>
+
+  <h2 style="margin-top: 3rem;">🚀 Projects</h2>
+  <div class="grid">
+    <div class="card"><h3>To-Do List</h3><p>Task manager using localStorage.</p></div>
+    <div class="card"><h3>Product Listing</h3><p>Filter, sort, and explore using API data.</p></div>
+    <div class="card"><h3>Portfolio Site</h3><p>What you're seeing now 😊</p></div>
+  </div>
+</section>
+
+<!-- To-Do List Page -->
+<section id="todo">
+  <h2>📝 To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Add a task..." />
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
+</section>
+
+<!-- Product Page -->
+<section id="products">
+  <h2>🛍️ Product Listing</h2>
+  <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
+  <select id="sortSelect" onchange="filterProducts()">
+    <option value="">Sort by</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+  </select>
+  <div class="grid" id="productList"></div>
+</section>
+
+<!-- Contact Page -->
+<section id="contact">
+  <h2>📬 Contact Me</h2>
+  <p>Email: <a href="mailto:sai.darshini@example.com">sai.darshini@example.com</a></p>
+  <p>Phone: +91-XXXXXXXXXX</p>
+  <form onsubmit="alert('Thanks for contacting!'); return false;">
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 Sai Darshini. All rights reserved.</p>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    if (id === "todo") loadTasks();
+  }
+
+  // To-Do Functions
+  function loadTasks() {
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = localStorage.getItem("tasks") || "";
+    attachDeleteEvents();
+  }
+
+  function addTask() {
+    const input = document.getElementById("taskInput");
+    const task = input.value.trim();
+    if (!task) return;
+    const li = document.createElement("li");
+    li.innerHTML = `${task} <span onclick='deleteTask(this)' style='cursor:pointer;'>❌</span>`;
+    document.getElementById("taskList").appendChild(li);
+    input.value = "";
+    saveTasks();
+  }
+
+  function deleteTask(elem) {
+    elem.parentElement.remove();
+    saveTasks();
+  }
+
+  function saveTasks() {
+    const list = document.getElementById("taskList");
+    localStorage.setItem("tasks", list.innerHTML);
+  }
+
+  function attachDeleteEvents() {
+    document.querySelectorAll("#taskList span").forEach(btn => {
+      btn.onclick = () => {
+        btn.parentElement.remove();
+        saveTasks();
+      };
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    const active = document.getElementById("todo").classList.contains("active");
+    if (active && e.key === "Enter") {
+      e.preventDefault();
+      addTask();
+    }
+  });
+
+  // Product Listing
+  let products = [];
+  async function fetchProducts() {
+    const res = await fetch('https://fakestoreapi.com/products');
+    products = await res.json();
+    filterProducts();
+  }
+
+  function filterProducts() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const sort = document.getElementById("sortSelect").value;
+    let filtered = products.filter(p => p.title.toLowerCase().includes(keyword));
+    if (sort === "price-asc") filtered.sort((a, b) => a.price - b.price);
+    if (sort === "price-desc") filtered.sort((a, b) => b.price - a.price);
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+    filtered.forEach(p => {
+      list.innerHTML += `
+        <div class="card">
+          <img src="${p.image}" />
+          <h4>${p.title}</h4>
+          <p>₹${p.price}</p>
+        </div>`;
+    });
+  }
+
+  window.onload = () => {
+    fetchProducts();
+  };
+</script>
+
+</body>
+</html>
+
